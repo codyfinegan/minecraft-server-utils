@@ -20,6 +20,9 @@ export MCSU_TARGETDIR="/path/to/wherever/you/want/to/store/backups"
 # change to non-existing directory if you don't want logs
 export MCSU_LOGDIR="/tmp"
 
+# s3 bucket for backup syncing
+export MCSU_S3_BUCKET="name-here"
+
 # that's it, don't change anything below the following line
 
 # ------------------------------------------------------------------------------
