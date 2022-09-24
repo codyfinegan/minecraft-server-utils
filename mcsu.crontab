@@ -13,3 +13,6 @@
 
 # start minecraft server on boot
 @reboot . $HOME/.mcsurc; $MCSU_START_ON_BOOT > $MCSU_LOGDIR/MCSU_START_ON_BOOT.log 2>&1
+
+# restart minecraft at 7:00 am every day
+0 7 * * * . $HOME/.mcsurc; $MCSU_TIMED_RESTART > $MCSU_LOGDIR/MCSU_TIMED_RESTART.log 2>&1
