@@ -73,3 +73,4 @@ while pgrep java > /dev/null; do sleep 2; echo 'Waiting for screen to stop...'; 
 
 echo "Starting server..."
 start_screen "mcs" "$MCSU_SERVERCMD"
+echo "Script complete."
