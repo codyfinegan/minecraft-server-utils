@@ -50,7 +50,11 @@ exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is restarting in 1...\",\"i
 sleep 1
 exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is restarting now!\",\"italic\":true,\"color\":\"gray\"}"
 
+echo "Stoppings service"
 exec_in_screen "mcs" "/stop"
 
 # Wait 1 minute to restart
-exec_in_screen "mcs" "$MCSU_SERVERCMD"
+echo "Waiting for service to stop for 60 seconds"
+sleep 60
+screen -ls
+# exec_in_screen "mcs" "$MCSU_SERVERCMD"
