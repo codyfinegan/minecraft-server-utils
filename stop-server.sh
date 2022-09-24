@@ -7,30 +7,28 @@ function exec_in_screen {
     screen -S $name -X stuff "$command\n";
 }
 
-# 10 mins
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in a 1 minute\",\"italic\":true,\"color\":\"gray\"}"
+function give_time_warning {
+    time=$1
+    wait=$2
+    exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is restarting ${time}\",\"italic\":true,\"color\":\"gray\"}"
+    echo "'${time}' warning given"
+    sleep $wait
+}
 
-# Sleep for 1 minute
-sleep 50
+give_time_warning "in 1 minute" 50
 
-# 10 seconds
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in 10 seconds...\",\"italic\":true,\"color\":\"gray\"}"
+# Countdown
+give_time_warning "in 10 seconds" 5
+give_time_warning "in 5" 1
+give_time_warning "in 4" 1
+give_time_warning "in 3" 1
+give_time_warning "in 2" 1
+give_time_warning "in 1" 1
+give_time_warning "now!" 0
 
-# Sleep for 5 seconds
-sleep 5
 
-# 5
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in 5...\",\"italic\":true,\"color\":\"gray\"}"
-sleep 1
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in 4...\",\"italic\":true,\"color\":\"gray\"}"
-sleep 1
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in 3...\",\"italic\":true,\"color\":\"gray\"}"
-sleep 1
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in 2...\",\"italic\":true,\"color\":\"gray\"}"
-sleep 1
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in 1...\",\"italic\":true,\"color\":\"gray\"}"
-sleep 1
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down now! Please reconnect in a few minutes.\",\"italic\":true,\"color\":\"gray\"}"
+echo "Kicking users!"
+exec_in_screen "mcs" "/kick @a Server is restarting, give it a couple of minutes"
 
 echo "Stoppings service"
 exec_in_screen "mcs" "/stop"
