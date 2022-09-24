@@ -8,7 +8,7 @@ function exec_in_screen {
 }
 
 # 10 mins
-exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is being shutting down in a 1 minute\",\"italic\":true,\"color\":\"gray\"}"
+exec_in_screen "mcs" "/tellraw @a {\"text\":\"Server is shutting down in a 1 minute\",\"italic\":true,\"color\":\"gray\"}"
 
 # Sleep for 1 minute
 sleep 50
