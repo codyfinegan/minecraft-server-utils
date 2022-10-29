@@ -36,16 +36,16 @@ give_time_warning "in 1" 1
 give_time_warning "now!" 0
 
 echo "Kicking users!"
-exec_in_screen "mcs" "/kick @a Server is restarting, give it a minute"
+exec_in_screen "mcs" "kick @a Server is restarting, give it a minute"
 
 echo "Stoppings service"
-exec_in_screen "mcs" "/stop"
+exec_in_screen "mcs" "stop"
 
-# Wait for 10 seconds
-sleep 10
+# Wait for 60 seconds
+sleep 60
 
 # Wait for minecraft to finish
-while pgrep java > /dev/null; do sleep 2; echo 'Waiting for server to stop...'; done
+while pgrep java > /dev/null; do sleep 10; echo 'Waiting for server to stop...'; done
 
 # Ok, now kill the screen service
 exec_in_screen "mcs" "^D"

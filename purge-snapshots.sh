@@ -2,13 +2,13 @@
 
 # keep all but the last 5 aws zips
 echo "Pruning tar files"
-(cd $MCSU_TARGETDIR && ls -tp | grep -v '/$' | tail -n +5 | xargs -I {} rm -- {})
+(cd $MCSU_TARGETDIR && ls -tp | grep -v '/$' | tail -n +3 | xargs -I {} rm -- {})
 echo "Syncing to s3"
 aws s3 sync --exclude='*' --include='*.tar.gz' ${MCSU_TARGETDIR} s3://${MCSU_S3_BUCKET}/${MCSU_SOURCEDIR_BASENAME} --delete
 
 
 echo "Processing folders"
-find $MCSU_TARGETDIR -name "chromaticchaos_*-*-*" -mtime +3 -type d | xargs rm -f -r;
+find $MCSU_TARGETDIR -name "chromaticchaos_*-*-*" -mtime +1 -type d | xargs rm -f -r;
 
 
 #REQUIRED_FREESPACE="$(du -s "$MCSU_SOURCEDIR" | cut -f1)"
