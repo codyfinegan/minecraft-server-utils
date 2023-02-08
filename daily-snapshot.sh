@@ -1,8 +1,9 @@
 #!/bin/bash
 
+PREFIX=""
 FROM="$MCSU_SOURCEDIR/"
-TO="$MCSU_TARGETDIR/${MCSU_SOURCEDIR_BASENAME}_$(date +%F)"
-ZIP="$MCSU_TARGETDIR/${MCSU_SOURCEDIR_BASENAME}_$(date +%F).tar.gz"
+TO="$MCSU_TARGETDIR/${PREFIX}${MCSU_SOURCEDIR_BASENAME}_$(date +%F)"
+ZIP="$MCSU_TARGETDIR/${PREFIX}${MCSU_SOURCEDIR_BASENAME}_$(date +%F).tar.gz"
 
 mkdir -p "$TO"
 rsync -xavh --delete "$FROM" "$TO"
