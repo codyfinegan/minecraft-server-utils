@@ -23,6 +23,10 @@ export MCSU_LOGDIR="/tmp"
 # s3 bucket for backup syncing
 export MCSU_S3_BUCKET="name-here"
 
+# Version of minecraft, eg 1194
+# used to suffix backup files
+export MCSU_VER=""
+
 # that's it, don't change anything below the following line
 
 # ------------------------------------------------------------------------------
