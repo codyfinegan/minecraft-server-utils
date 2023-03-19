@@ -9,4 +9,4 @@ mkdir -p "$TO"
 rsync -xavh --delete "$FROM" "$TO"
 
 tar -czf $ZIP -C $TO .
-aws s3 sync --exclude='*' --include='*.tar.gz' ${MCSU_TARGETDIR} s3://${MCSU_S3_BUCKET}/${MCSU_SOURCEDIR} --delete 
+aws s3 sync --exclude='*' --include='*.tar.gz' ${MCSU_TARGETDIR} s3://${MCSU_S3_BUCKET}/${MCSU_SOURCEDIR_BASENAME} --delete 
