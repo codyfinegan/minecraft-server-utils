@@ -8,7 +8,7 @@ aws s3 sync --exclude='*' --include='*.tar.gz' ${MCSU_TARGETDIR} s3://${MCSU_S3_
 
 
 echo "Processing folders"
-find $MCSU_TARGETDIR -name "chromaticchaos_*-*-*" -mtime +1 -type d | xargs rm -f -r;
+find $MCSU_TARGETDIR -name "chromaticchaos*_*-*-*" -mtime +1 -type d | xargs rm -f -r;
 
 
 #REQUIRED_FREESPACE="$(du -s "$MCSU_SOURCEDIR" | cut -f1)"

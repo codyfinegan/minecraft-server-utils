@@ -4,6 +4,9 @@
 function start_screen {
     name=$1
     command=$2
+    if [ -f mcscreen.log ]; then
+	    mv mcscreen.log "mcscreen_$(date +%F-%H%M).log"
+    fi
     #screen -dmS $name sh; sleep 1; screen -S $name -X stuff "$command\n";
     screen -L -Logfile mcscreen.log -dmS $name sh; sleep 1; screen -S $name -X stuff "$command\n";
 }
@@ -38,6 +41,7 @@ give_time_warning "now!" 0
 
 echo "Kicking users!"
 exec_in_screen "mcs" "kick @a Server is restarting, give it a minute"
+exec_in_screen "mcs" "maintenance off"
 
 echo "Stoppings service"
 exec_in_screen "mcs" "stop"
